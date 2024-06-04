@@ -1,9 +1,7 @@
 #include <stdio.h>
-#include <cs50.h>
 #include <stdlib.h>
-#include <string.h>
 
-int main(int argc, string argv[])
+int main(int argc, char* argv[])
 {
     if (argc < 2)
     {
@@ -20,10 +18,13 @@ int main(int argc, string argv[])
     int mlift = atoi(argv[1]);
     int tlift = mlift + 5;
     int wlift = tlift + 5;
+    int fcount = 0;
 
     printf("Today you should lift %i pounds.\n", tlift);
 
-    int YN = get_int("How much did you lift?\n");
+    int YN;
+    printf("How much did you lift: ");
+    scanf("%i", &YN);
 
     if (YN == tlift)
     {
@@ -33,6 +34,8 @@ int main(int argc, string argv[])
     else
     {
         printf("Try again tomorrow!\n");
+        fcount += 1;
+        printf("Failed %i times\n", fcount);
         return 0;
     }
 }
