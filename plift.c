@@ -27,36 +27,35 @@ int main(int argc, char* argv[])
 
     while (fcount < 3)
     {
-        printf("Today you should lift %i pounds.\n", mlift += 5);
+        mlift += 5;
+        printf("Today you should lift %i pounds.\n", mlift);
 
         int YN;
         printf("How much did you lift: ");
         scanf("%i", &YN);
 
+        fprintf(file, "Day #%i, Projected %i, Actual %i, Failed %i times\n", daycount, mlift, YN, fcount);
+
         if (YN >= mlift)
         {
-            fprintf(file, "Day #%i, Projected %i, Actual %i\n", daycount, mlift, YN);
+            
             if (YN > mlift)
             {
-                fprintf(file, "Day #%i, Projected %i, Actual %i\n", daycount, mlift, YN);
                 printf("Excellent! Keep going!\n");
                 mlift == YN;
                 mlift += 5;
-                daycount ++;
-
-            }            
+            }
+                        
         }
         else if (YN < mlift)
         {
-            fprintf(file, "Day #%i, Projected %i, Actual %i\n", daycount, mlift, YN);
             printf("Try again tomorrow!\n");
             mlift = YN;
             fcount ++;
             printf("Failed %i times\n", fcount);
-            daycount ++;
         }
-        
         printf("Day #%i\n", daycount);
+        daycount ++;
     }
     fclose(file);
     return 0;
