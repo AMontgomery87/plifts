@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
             printf("Tomorrow you should lift %i\n", mlift + 5);
             if (YN > mlift)
             {
-                mlift = YN;
+                mlift = YN + 5;
                 printf("Excellent! Keep going!\n");
                 printf("mlift is %i\n", mlift);
                 daycount ++;
@@ -48,8 +48,8 @@ int main(int argc, char* argv[])
         else if (YN < mlift)
         {
             printf("Try again tomorrow!\n");
-            mlift -= 5;
-            fcount += 1;
+            mlift = YN;
+            fcount ++;
             printf("Failed %i times\n", fcount);
             daycount ++;
         }
