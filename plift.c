@@ -16,26 +16,35 @@ int main(int argc, char* argv[])
     }
 
     int mlift = atoi(argv[1]);
-    int tlift = mlift + 5;
-    int wlift = tlift + 5;
+    //int tlift = mlift + 5;
+    //int wlift = tlift + 5;
     int fcount = 0;
 
-    printf("Today you should lift %i pounds.\n", tlift);
-
-    int YN;
-    printf("How much did you lift: ");
-    scanf("%i", &YN);
-
-    if (YN == tlift)
+    while (fcount < 3)
     {
-        printf("Tomorrow you should lift %i\n", wlift);
-        return 0;
+        printf("Today you should lift %i pounds.\n", mlift += 5);
+
+        int YN;
+        printf("How much did you lift: ");
+        scanf("%i", &YN);
+
+        if (YN >= mlift)
+        {
+            printf("Tomorrow you should lift %i\n", mlift + 5);
+            if (YN > mlift)
+            {
+                mlift = YN;
+                printf("Excellent! Keep going!\n");
+                printf("mlift is %i\n", mlift);
+            }            
+        }
+        else if (YN < mlift)
+        {
+            printf("Try again tomorrow!\n");
+            mlift -= 5;
+            fcount += 1;
+            printf("Failed %i times\n", fcount);
+        }
     }
-    else
-    {
-        printf("Try again tomorrow!\n");
-        fcount += 1;
-        printf("Failed %i times\n", fcount);
-        return 0;
-    }
+    return 0;
 }
