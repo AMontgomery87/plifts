@@ -3,6 +3,12 @@
 
 int main(int argc, char* argv[])
 {
+    FILE *file = fopen("liftlog.csv", "a");
+    if (file == NULL)
+    {
+        return 1;
+    }
+
     if (argc < 2)
     {
         printf("Usage: ./plift starting-lift-weight\n");
@@ -16,9 +22,8 @@ int main(int argc, char* argv[])
     }
 
     int mlift = atoi(argv[1]);
-    //int tlift = mlift + 5;
-    //int wlift = tlift + 5;
     int fcount = 0;
+    int daycount = 1;
 
     while (fcount < 3)
     {
@@ -36,6 +41,8 @@ int main(int argc, char* argv[])
                 mlift = YN;
                 printf("Excellent! Keep going!\n");
                 printf("mlift is %i\n", mlift);
+                daycount ++;
+
             }            
         }
         else if (YN < mlift)
@@ -44,7 +51,11 @@ int main(int argc, char* argv[])
             mlift -= 5;
             fcount += 1;
             printf("Failed %i times\n", fcount);
+            daycount ++;
         }
+        fprintf(file, "Day #%i, Projected %i, Actual %i\n", daycount, mlift, YN);
+        printf("Day #%i\n", daycount);
     }
+    fclose(file);
     return 0;
 }
