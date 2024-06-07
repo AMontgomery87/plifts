@@ -35,25 +35,27 @@ int main(int argc, char* argv[])
 
         if (YN >= mlift)
         {
-            printf("Tomorrow you should lift %i\n", mlift + 5);
+            fprintf(file, "Day #%i, Projected %i, Actual %i\n", daycount, mlift, YN);
             if (YN > mlift)
             {
-                mlift = YN + 5;
+                fprintf(file, "Day #%i, Projected %i, Actual %i\n", daycount, mlift, YN);
                 printf("Excellent! Keep going!\n");
-                printf("mlift is %i\n", mlift);
+                mlift == YN;
+                mlift += 5;
                 daycount ++;
 
             }            
         }
         else if (YN < mlift)
         {
+            fprintf(file, "Day #%i, Projected %i, Actual %i\n", daycount, mlift, YN);
             printf("Try again tomorrow!\n");
             mlift = YN;
             fcount ++;
             printf("Failed %i times\n", fcount);
             daycount ++;
         }
-        fprintf(file, "Day #%i, Projected %i, Actual %i\n", daycount, mlift, YN);
+        
         printf("Day #%i\n", daycount);
     }
     fclose(file);
