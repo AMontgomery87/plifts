@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
             scanf("%i", &YN);
 
             // Passes data to the logbook
-            fprintf(file, "%s, Projected %i, Actual %i, --, ", lifts[i].name, lifts[i].weight, YN);
+            fprintf(file, " -- %s, Projected %i, Actual %i, ", lifts[i].name, lifts[i].weight, YN);
 
             if (YN >= lifts[i].weight)
             {
