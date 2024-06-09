@@ -1,12 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-<<<<<<< HEAD
-// Current version takes a single lift to progress at argv[1]
-int main(int argc, char* argv[])
-{
-    // Opens/Creates a file for logbook of lift
-=======
 // I'm only tracking 3 lifts for this program currently, but this avoids redundancy in code later
 typedef struct 
 {
@@ -19,7 +13,6 @@ int main(int argc, char* argv[])
 {
     // This makes a logbook giving day, lift, weight, and number of times failed at that lift into an external csv
     // file.
->>>>>>> multilift
     FILE *file = fopen("liftlog.csv", "a");
     if (file == NULL)
     {
@@ -35,15 +28,6 @@ int main(int argc, char* argv[])
         return 2;
     }
 
-<<<<<<< HEAD
-    // mlift is incremented by 5 as long as the lifter hits the lift from the day before
-    int mlift = atoi(argv[1]);
-
-    // failures are tracked on fcount
-    int fcount = 0;
-
-    // Days are incremented for logbook entry
-=======
     // Defines the three lifts performed, lift name was a const, lift weight comes from CLI,
     // and fail count is tracked individually
     Lift lifts[num_lifts];
@@ -60,26 +44,13 @@ int main(int argc, char* argv[])
     lifts[2].fail_count = 0;
 
     // Days are counted just for the logbook
->>>>>>> multilift
     int daycount = 1;
 
     while (lifts[0].fail_count < 3 && lifts[1].fail_count < 3 && lifts[2].fail_count < 3)
     {
         fprintf(file, "Day #%i: ", daycount);
 
-<<<<<<< HEAD
-        // YN takes actual lifted weight 
-        int YN;
-        printf("How much did you lift: ");
-        scanf("%i", &YN);
-
-        fprintf(file, "Day #%i, Projected %i, Actual %i, Failed %i times\n", daycount, mlift, YN, fcount);
-
-        // Conditionals compare YN to projected weight
-        if (YN >= mlift)
-=======
         for (int i = 0; i < num_lifts; i++)
->>>>>>> multilift
         {
             // Increments weight for following day by 5 if lift is the same
             if (lifts[i].fail_count >= 3)
@@ -98,12 +69,6 @@ int main(int argc, char* argv[])
 
             if (YN >= lifts[i].weight)
             {
-<<<<<<< HEAD
-                // Special case where lifter lifts more, continues from new maximum
-                printf("Excellent! Keep going!\n");
-                mlift == YN;
-                mlift += 5;
-=======
                 // As long as the lifter lifts greater than or equal to the projected
                 // Continue adding 5
                 lifts[i].weight = YN;
@@ -116,7 +81,6 @@ int main(int argc, char* argv[])
                 printf("Try again tomorrow!\n");
                 lifts[i].weight = YN;
                 lifts[i].fail_count++;
->>>>>>> multilift
             }
         }
         fprintf(file, "\n");
