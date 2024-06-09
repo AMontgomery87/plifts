@@ -48,6 +48,8 @@ int main(int argc, char* argv[])
 
     while (lifts[0].fail_count < 3 && lifts[1].fail_count < 3 && lifts[2].fail_count < 3)
     {
+        fprintf(file, "Day #%i: ", daycount);
+
         for (int i = 0; i < num_lifts; i++)
         {
             // Increments weight for following day by 5 if lift is the same
@@ -63,7 +65,7 @@ int main(int argc, char* argv[])
             scanf("%i", &YN);
 
             // Passes data to the logbook
-            fprintf(file, "Day #%i, %s, Projected %i, Actual %i\n", daycount, lifts[i].name, lifts[i].weight, YN);
+            fprintf(file, "%s, Projected %i, Actual %i, --, ", lifts[i].name, lifts[i].weight, YN);
 
             if (YN >= lifts[i].weight)
             {
@@ -81,7 +83,7 @@ int main(int argc, char* argv[])
                 lifts[i].fail_count++;
             }
         }
-
+        fprintf(file, "\n");
         // Increments daycount and prints information in terminal
         daycount++;
         printf("Day #%i\n", daycount);
