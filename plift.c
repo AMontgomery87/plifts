@@ -67,15 +67,9 @@ int main(int argc, char* argv[])
 
             if (YN >= lifts[i].weight)
             {
-                // If lifter lifts more, it resets working weight to the new record and increments
-                // by 5 instead of continuing with projected weights
-                if (YN > lifts[i].weight)
-                {
-                    printf("Excellent! Keep going!\n");
-                    lifts[i].weight = YN;
-                    //lifts[i].weight += 5;
-                }
-                
+                // As long as the lifter lifts greater than or equal to the projected
+                // Continue adding 5
+                lifts[i].weight = YN;
             }
             else
             {
@@ -85,7 +79,6 @@ int main(int argc, char* argv[])
                 printf("Try again tomorrow!\n");
                 lifts[i].weight = YN;
                 lifts[i].fail_count++;
-                printf("Failed %i times for %s\n", lifts[i].fail_count, lifts[i].name);
             }
         }
 
